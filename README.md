@@ -13,7 +13,7 @@ In main loop you need to iterate the List and try to find in hashmap the element
 
 ### Complexity
 Time complexity:
-O(n)O(n)O(n)
+O(n)
 
 Space complexity:
-O(n)O(n)O(n)
+O(n)

@@ -58,6 +58,14 @@ class Solution:
         
         return [ind1, ind2]
 
+    def two_sum_final(self, nums: List[int], target: int) -> List[int]:
+        hashmap = {}
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in hashmap:
+                return [i, hashmap[complement]]
+            hashmap[nums[i]] = i
+
 print("---first---")
 print(Solution.two_sum(1, [2,7,11,15], 9))
 print(Solution.two_sum(1, [3,2,4], 6))
