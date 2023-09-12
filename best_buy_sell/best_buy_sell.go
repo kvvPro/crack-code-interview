@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func maxProfit(prices []int) int {
 
@@ -21,14 +24,32 @@ func maxProfit(prices []int) int {
 	return profit
 }
 
+func maxProfit_ideal(prices []int) int {
+	maxProfit := 0
+
+	lowestValue := math.MaxInt32
+
+	for _, value := range prices {
+		if value < lowestValue {
+			lowestValue = value
+		}
+
+		if value-lowestValue > maxProfit {
+			maxProfit = value - lowestValue
+		}
+	}
+
+	return maxProfit
+}
+
 func main() {
 	nums := []int{7, 1, 5, 3, 6, 4}
 	// Output: 5
-	profit := maxProfit(nums)
+	profit := maxProfit_ideal(nums)
 	fmt.Printf("\nnums = %v \nk = %v", nums, profit)
 
 	nums = []int{7, 6, 4, 3, 1}
 	// Output: 0
-	profit = maxProfit(nums)
+	profit = maxProfit_ideal(nums)
 	fmt.Printf("\nnums = %v \nk = %v", nums, profit)
 }
